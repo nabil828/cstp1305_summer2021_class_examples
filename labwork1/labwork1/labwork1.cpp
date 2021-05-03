@@ -6,7 +6,7 @@ class MyStack{
 	// push – insert an item at the top of the stack
 	//	pop – remove and return the top item
 	//	peek – return the top item
-
+     
 private:
 	// 1- data members
 	int arr[100]; //later on, this will cause some problems 
