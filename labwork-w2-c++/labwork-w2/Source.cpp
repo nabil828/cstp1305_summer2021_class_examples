@@ -68,6 +68,12 @@ public:
         return top->data;
     }
 
+    //destructor
+    ~StackUSingALinkedList() {
+        while (top != NULL)
+            pop();
+    }
+
 };
 
 
