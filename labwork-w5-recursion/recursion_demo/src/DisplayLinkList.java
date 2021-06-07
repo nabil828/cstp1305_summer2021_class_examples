@@ -22,7 +22,7 @@ public class DisplayLinkList {
         d.next = e;
         d.next.next = f; //another way to say e.next = f
 
-        displayListRecursively(a);
+        displayListRecursivelyLastToFirst(a);
     }
 
     private static void displayListRecursively(Node a) {
@@ -31,8 +31,18 @@ public class DisplayLinkList {
         }
         else{//recursive step
             System.out.println(a.data);
-            displayListIteratively(a.next);
+            displayListRecursively(a.next);
 
+        }
+    }
+
+    private static void displayListRecursivelyLastToFirst(Node a) {
+        if(a == null) { // basic step - stopping condition
+            ;
+        }
+        else{//recursive step
+            displayListRecursivelyLastToFirst(a.next);
+            System.out.println(a.data);
         }
     }
 
