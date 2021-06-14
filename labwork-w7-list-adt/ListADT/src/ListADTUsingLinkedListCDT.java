@@ -79,16 +79,35 @@ public class ListADTUsingLinkedListCDT {
         return result;
     }
 
-//    /** Removes the entry at a given position from this list.
-//     Entries originally at positions higher than the given
-//     position are at the next lower position within the list,
-//     and the list's size is decreased by 1.
-//     @param givenPosition  An integer that indicates the position of
-//     the entry to be removed.
-//     @return  A reference to the removed entry.
-//     @throws  IndexOutOfBoundsException if either
-//     givenPosition < 1 or givenPosition > getLength(). */
-//    public String remove(int givenPosition);
+    /** Removes the entry at a given position from this list.
+     Entries originally at positions higher than the given
+     position are at the next lower position within the list,
+     and the list's size is decreased by 1.
+     @param givenPosition  An integer that indicates the position of
+     the entry to be removed.
+     @return  A reference to the removed entry.
+     @throws  IndexOutOfBoundsException if either
+     givenPosition < 1 or givenPosition > getLength(). */
+    public String remove(int givenPosition){
+        if(first == last && first !=null){
+            //there is only on element in the list
+            String result = first.data;
+            first = null;
+            last = null;
+            return result;
+        }else{
+            int i = 1;
+            Node iterator = first;
+            while ( i < givenPosition){
+                iterator = iterator.next;
+                i++;
+            }
+            String result = iterator.data;
+            Node before = returnsBefore(givenPosition);
+            before.next = before.next.next;
+            return result;
+        }
+    }
 //
 //    /** Removes all entries from this list. */
 //    public void clear();
@@ -136,7 +155,26 @@ public class ListADTUsingLinkedListCDT {
         aList.add("read chapter 10");
         aList.add("call home");
         aList.add("buy card for sue");
-//        aList.replace(2, "send an email");
+
+        aList.add(2, "call Phillip");
+        // The list at this point of time should have these items
+        //        1- ("read chapter 10");
+        //        2- ("call Phillip");
+        //        3- ("call home");
+        //        4- ("buy card for sue");
+
+
+
+        System.out.println(aList.remove(3)); // should print "call home"
+        // The list at this point of time should have these items
+        //        1- ("read chapter 10");
+        //        2- ("call Phillip");
+        //        4- ("buy card for sue");
+
+
+
+
+        //        aList.replace(2, "send an email");
 //        // The list at this point of time should have these items
 //        //        1- ("read chapter 10");
 //        //        2- ("send an email");
@@ -145,11 +183,5 @@ public class ListADTUsingLinkedListCDT {
 //        // The list at this point of time should have these items
 //        //        1- ("read chapter 10");
 //        //        3- ("buy card for sue");
-        aList.add(2, "call Phillip");
-        // The list at this point of time should have these items
-        //        1- ("read chapter 10");
-        //        2- ("call Phillip");
-        //        3- ("call home");
-        //        4- ("buy card for sue");
     }
 }
