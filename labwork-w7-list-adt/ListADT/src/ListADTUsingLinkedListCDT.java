@@ -105,6 +105,11 @@ public class ListADTUsingLinkedListCDT {
             String result = iterator.data;
             Node before = returnsBefore(givenPosition);
             before.next = before.next.next;
+
+            // check whether you have to change the last pointer
+            if(before.next == null ){
+                last = before;
+            }
             return result;
         }
     }
